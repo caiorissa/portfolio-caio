@@ -25,7 +25,7 @@ export const projects = [
     descriptionEn: 'Modern institutional website. Paid project.',
     tech: ['React', 'JavaScript', 'TailwindCSS'],
     image: '/images/printsitedopp.png',
-    demo: 'https://ventlize.com.br',
+    demo: 'https://ventlize-site.vercel.app',
     github: null,
     featured: true,
   },
