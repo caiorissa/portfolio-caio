@@ -1,5 +1,6 @@
 import FadeContent from '../reactbits/FadeContent';
 import GlassSurface from '../reactbits/GlassSurface';
+import SpotlightCard from '../ui/SpotlightCard';
 import Dock from '../reactbits/Dock';
 import { socials } from '../../data/projects';
 import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -30,31 +31,35 @@ export default function Contact({ t }) {
         </FadeContent>
 
         <FadeContent blur delay={0.2}>
-          <GlassSurface
-            width="100%"
-            height="auto"
-            borderRadius={24}
-            borderWidth={0.06}
-            brightness={35}
-            opacity={0.9}
-            blur={28}
-            backgroundOpacity={0.25}
-            saturation={1.4}
-          >
-            <div style={{ padding: '40px 32px', textAlign: 'center', width: '100%' }}>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 18, marginBottom: 32, lineHeight: 1.6 }}>
-                {t.contact.text}
-              </p>
-              <a
-                href="mailto:caiorissa@gmail.com?subject=Contato%20via%20Portfólio"
-                style={{ display: 'inline-block', padding: '16px 40px', background: '#5227FF', color: 'white', fontWeight: 500, borderRadius: 16, textDecoration: 'none', fontSize: 18, transition: 'all 0.3s' }}
-                onMouseEnter={e => e.target.style.background = '#6b3fff'}
-                onMouseLeave={e => e.target.style.background = '#5227FF'}
-              >
-                {t.contact.email}
-              </a>
-            </div>
-          </GlassSurface>
+          <SpotlightCard glowColor="purple">
+            <GlassSurface
+              width="100%"
+              height="auto"
+              borderRadius={24}
+              borderWidth={0.1}
+              brightness={38}
+              opacity={0.95}
+              blur={34}
+              backgroundOpacity={0.26}
+              saturation={1.9}
+              distortionScale={-248}
+              className="glass-surface--minimal"
+            >
+              <div style={{ padding: '40px 32px', textAlign: 'center', width: '100%' }}>
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 18, marginBottom: 32, lineHeight: 1.6 }}>
+                  {t.contact.text}
+                </p>
+                <a
+                  href="mailto:caiorissa@gmail.com?subject=Contato%20via%20Portfólio"
+                  style={{ display: 'inline-block', padding: '16px 40px', background: '#5227FF', color: 'white', fontWeight: 500, borderRadius: 16, textDecoration: 'none', fontSize: 18, transition: 'all 0.3s' }}
+                  onMouseEnter={e => e.target.style.background = '#6b3fff'}
+                  onMouseLeave={e => e.target.style.background = '#5227FF'}
+                >
+                  {t.contact.email}
+                </a>
+              </div>
+            </GlassSurface>
+          </SpotlightCard>
         </FadeContent>
 
         <FadeContent blur delay={0.6}>

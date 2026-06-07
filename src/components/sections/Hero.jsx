@@ -28,9 +28,25 @@ export default function Hero({ t }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}
+          style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', marginBottom: 16, maxWidth: 500, margin: '0 auto 16px' }}
         >
           {t.hero.subtitle}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.85 }}
+          style={{
+            color: 'rgba(203, 213, 225, 0.85)',
+            fontSize: 'clamp(0.95rem, 2vw, 1.05rem)',
+            lineHeight: 1.6,
+            marginBottom: 40,
+            maxWidth: 520,
+            margin: '0 auto 40px',
+          }}
+        >
+          {t.hero.description}
         </motion.p>
 
         <motion.div

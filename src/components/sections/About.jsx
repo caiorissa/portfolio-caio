@@ -1,6 +1,20 @@
 import FadeContent from '../reactbits/FadeContent';
 import Counter from '../reactbits/Counter';
 import GlassSurface from '../reactbits/GlassSurface';
+import SpotlightCard from '../ui/SpotlightCard';
+
+const statGlassProps = {
+  width: '100%',
+  height: 'auto',
+  borderRadius: 16,
+  borderWidth: 0.09,
+  brightness: 32,
+  opacity: 0.92,
+  blur: 30,
+  backgroundOpacity: 0.22,
+  saturation: 1.85,
+  distortionScale: -232,
+};
 
 export default function About({ t }) {
   return (
@@ -15,56 +29,68 @@ export default function About({ t }) {
 
         <FadeContent blur delay={0.2}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 48 }}>
-            <GlassSurface
-              width="100%"
-              height="auto"
-              borderRadius={20}
-              borderWidth={0.08}
-              brightness={40}
-              opacity={0.9}
-              blur={28}
-              backgroundOpacity={0.25}
-              saturation={1.4}
-            >
-              <div style={{ padding: 24, textAlign: 'center' }}>
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 18, lineHeight: 1.7 }}>
-                  {t.about.text}
-                </p>
-              </div>
-            </GlassSurface>
+            <SpotlightCard glowColor="purple">
+              <GlassSurface
+                width="100%"
+                height="auto"
+                borderRadius={20}
+                borderWidth={0.1}
+                brightness={38}
+                opacity={0.95}
+                blur={34}
+                backgroundOpacity={0.26}
+                saturation={1.9}
+                distortionScale={-248}
+                className="glass-surface--minimal"
+              >
+                <div style={{ padding: 24, textAlign: 'center' }}>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 18, lineHeight: 1.7 }}>
+                    {t.about.text}
+                  </p>
+                </div>
+              </GlassSurface>
+            </SpotlightCard>
           </div>
         </FadeContent>
 
         <FadeContent blur delay={0.4}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, maxWidth: 600, margin: '0 auto' }}>
-            <GlassSurface width="100%" height="auto" borderRadius={16} borderWidth={0.06} brightness={35} opacity={0.85} blur={24} backgroundOpacity={0.2} saturation={1.4}>
-              <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
-                  <Counter value={7} fontSize={32} textColor="#5227FF" fontWeight="bold" />
-                  <span style={{ color: '#5227FF', fontSize: 24, fontWeight: 700 }}>+</span>
+            <SpotlightCard glowColor="purple">
+              <GlassSurface {...statGlassProps} className="glass-surface--minimal">
+                <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
+                    <Counter value={7} fontSize={32} textColor="#5227FF" fontWeight="bold" />
+                    <span style={{ color: '#5227FF', fontSize: 24, fontWeight: 700 }}>+</span>
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8 }}>{t.stats.projects}</p>
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8 }}>{t.stats.projects}</p>
-              </div>
-            </GlassSurface>
+              </GlassSurface>
+            </SpotlightCard>
 
-            <GlassSurface width="100%" height="auto" borderRadius={16} borderWidth={0.06} brightness={35} opacity={0.85} blur={24} backgroundOpacity={0.2} saturation={1.4}>
-              <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
-                  <Counter value={3} fontSize={32} textColor="#5227FF" fontWeight="bold" />
-                  <span style={{ color: '#5227FF', fontSize: 24, fontWeight: 700 }}>+</span>
+            <SpotlightCard glowColor="purple">
+              <GlassSurface {...statGlassProps} className="glass-surface--minimal">
+                <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
+                    <Counter value={3} fontSize={32} textColor="#5227FF" fontWeight="bold" />
+                    <span style={{ color: '#5227FF', fontSize: 24, fontWeight: 700 }}>+</span>
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8 }}>{t.stats.clients}</p>
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8 }}>{t.stats.clients}</p>
-              </div>
-            </GlassSurface>
+              </GlassSurface>
+            </SpotlightCard>
 
-            <GlassSurface width="100%" height="auto" borderRadius={16} borderWidth={0.06} brightness={35} opacity={0.85} blur={24} backgroundOpacity={0.2} saturation={1.4}>
-              <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
-                  <Counter value={2024} fontSize={24} textColor="#5227FF" fontWeight="bold" />
+            <SpotlightCard glowColor="purple">
+              <GlassSurface {...statGlassProps} className="glass-surface--minimal">
+                <div style={{ padding: '24px 16px', textAlign: 'center', width: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', minHeight: 42 }}>
+                    <span style={{ color: '#5227FF', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+                      2024
+                    </span>
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8, fontFamily: 'inherit' }}>{t.stats.year}</p>
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, marginTop: 8 }}>{t.stats.year}</p>
-              </div>
-            </GlassSurface>
+              </GlassSurface>
+            </SpotlightCard>
           </div>
         </FadeContent>
       </div>
