@@ -1,0 +1,62 @@
+.spotlight-card {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  touch-action: none;
+}
+
+.spotlight-card__content {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* Luz na superfície — por cima do conteúdo */
+.spotlight-card__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  mix-blend-mode: screen;
+}
+
+/* Brilho na borda — por cima de tudo */
+.spotlight-card__border {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 11;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  padding: 1.5px;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.spotlight-card .glass-surface__filter {
+  display: none !important;
+}
+
+.spotlight-card .glass-surface__sheen {
+  display: none !important;
+}
+
+.spotlight-card .glass-surface {
+  background: rgba(8, 8, 12, 0.35) !important;
+  backdrop-filter: blur(14px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.4) !important;
+  border: none !important;
+  box-shadow: none !important;
+}

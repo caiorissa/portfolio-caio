@@ -1,45 +1,34 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
 import FadeContent from '../reactbits/FadeContent';
 import GlassSurface from '../reactbits/GlassSurface';
+import TiltedCard from '../reactbits/TiltedCard';
 import { projects } from '../../data/projects';
 
-const tiltSpring = { damping: 15, stiffness: 200, mass: 0.8 };
+const tiltProps = {
+  containerWidth: '100%',
+  containerHeight: 'auto',
+  imageWidth: '100%',
+  imageHeight: 'auto',
+  scaleOnHover: 1.04,
+  rotateAmplitude: 14,
+  showMobileWarning: false,
+};
 
 function ProjectCard({ project, t, lang, index }) {
-  const ref = useRef(null);
-  const rotateX = useSpring(0, tiltSpring);
-  const rotateY = useSpring(0, tiltSpring);
-  const cardScale = useSpring(1, tiltSpring);
-
-  function handleMouse(e) {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    rotateX.set(y * -20);
-    rotateY.set(x * 20);
-  }
-
   return (
     <FadeContent blur delay={index * 0.1} yOffset={30}>
-      <motion.div
-        ref={ref}
-        onMouseMove={handleMouse}
-        onMouseEnter={() => cardScale.set(1.05)}
-        onMouseLeave={() => { rotateX.set(0); rotateY.set(0); cardScale.set(1); }}
-        style={{ rotateX, rotateY, scale: cardScale, perspective: 600, transformStyle: 'preserve-3d', cursor: 'pointer' }}
-      >
+      <TiltedCard {...tiltProps} captionText={project.title}>
         <GlassSurface
           width="100%"
           height="auto"
           borderRadius={16}
-          borderWidth={0.07}
-          brightness={35}
-          opacity={0.88}
-          blur={26}
-          backgroundOpacity={0.18}
-          saturation={1.35}
+          borderWidth={0.095}
+          brightness={32}
+          opacity={0.93}
+          blur={32}
+          backgroundOpacity={0.24}
+          saturation={1.8}
+          distortionScale={-240}
+          className="glass-surface--minimal"
         >
           <div style={{ width: '100%' }}>
             <div style={{ overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
@@ -90,7 +79,7 @@ function ProjectCard({ project, t, lang, index }) {
             </div>
           </div>
         </GlassSurface>
-      </motion.div>
+      </TiltedCard>
     </FadeContent>
   );
 }

@@ -193,6 +193,7 @@ const GlassSurface = ({
           </filter>
         </defs>
       </svg>
+      <div className="glass-surface__sheen" aria-hidden />
       <div className="glass-surface__content">{children}</div>
     </div>
   );

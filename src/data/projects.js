@@ -7,17 +7,19 @@ export const projects = [
     image: '/images/fyzen1.png',
     demo: 'https://fyzen.app',
     github: null,
-    featured: true,
+    featured: null,
   },
   {
     title: 'Riegel Films',
-    description: 'Site profissional para produtora de filmes. Projeto pago.',
-    descriptionEn: 'Professional website for a film production company. Paid project.',
+    description:
+      'Site portfolio para criação audiovisual, com apresentação de serviços, portfólio de vídeos, destaque de resultados e contato para novos projetos.',
+    descriptionEn:
+      'Portfolio site for audiovisual production, featuring services overview, video showcase, results highlights, and contact for new projects.',
     tech: ['React', 'JavaScript', 'TailwindCSS'],
     image: '/images/printsiteriegel.png',
     demo: 'https://riegelfilms.com',
     github: null,
-    featured: true,
+    featured: null,
   },
   {
     title: 'Ventlize',
@@ -27,34 +29,52 @@ export const projects = [
     image: '/images/printsitedopp.png',
     demo: 'https://ventlize-site.vercel.app',
     github: null,
-    featured: true,
+    featured: null,
+  },
+];
+
+export const mockups = [
+  {
+    title: 'Noir Café',
+    category: 'Cafeteria',
+    categoryEn: 'Coffee Shop',
+    description:
+      'Site institucional para cafeteria premium, com cardápio digital, história da marca, reservas e contato para eventos.',
+    descriptionEn:
+      'Institutional site for a premium coffee shop, featuring digital menu, brand story, reservations, and event contact.',
+    tech: ['React', 'TailwindCSS', 'UI/UX'],
+    url: 'noircafe.com.br',
+    gradient: 'linear-gradient(145deg, #1a0f0a 0%, #3d2314 50%, #c9a87c 100%)',
+    image: null,
+    demo: null,
   },
   {
-    title: 'ThemeForge',
-    description: 'Gerador de temas interativo com preview em tempo real.',
-    descriptionEn: 'Interactive theme generator with real-time preview.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: '/images/geradordetemas.png',
-    demo: 'https://themeforge-caiorissa.vercel.app/',
-    github: 'https://github.com/caaiiors/themeforge',
+    title: 'Lumen SaaS',
+    category: 'Dashboard',
+    categoryEn: 'Dashboard',
+    description:
+      'Painel de analytics fictício para startups, com métricas em tempo real, gráficos, relatórios e gestão de equipe.',
+    descriptionEn:
+      'Fictional analytics dashboard for startups, with real-time metrics, charts, reports, and team management.',
+    tech: ['React', 'JavaScript', 'TailwindCSS'],
+    url: 'lumen.app',
+    gradient: 'linear-gradient(145deg, #050505 0%, #1a1033 50%, #5227FF 100%)',
+    image: null,
+    demo: null,
   },
   {
-    title: 'Jogo da Velha',
-    description: 'Jogo da velha clássico com interface limpa.',
-    descriptionEn: 'Classic tic-tac-toe with a clean interface.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: '/images/jogodavelhaprint.png',
-    demo: 'https://jogo-da-velha-caiorissa.vercel.app',
-    github: 'https://github.com/caaiiors/jogo-da-velha',
-  },
-  {
-    title: 'Mini Quiz Interativo',
-    description: 'Quiz interativo com perguntas e respostas dinâmicas.',
-    descriptionEn: 'Interactive quiz with dynamic Q&A.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: '/images/quizinterativoprint.png',
-    demo: 'https://mini-quiz-interativo-caiorissa.vercel.app/',
-    github: 'https://github.com/caaiiors/mini-quiz-interativo',
+    title: 'Atelier Mode',
+    category: 'E-commerce',
+    categoryEn: 'E-commerce',
+    description:
+      'Loja virtual de moda minimalista, com catálogo de produtos, lookbook editorial, filtros e checkout simplificado.',
+    descriptionEn:
+      'Minimalist fashion e-commerce store with product catalog, editorial lookbook, filters, and simplified checkout.',
+    tech: ['React', 'TailwindCSS', 'Figma'],
+    url: 'ateliermode.com',
+    gradient: 'linear-gradient(145deg, #f8f4f0 0%, #e8dfd6 50%, #1a1a1a 100%)',
+    image: null,
+    demo: null,
   },
 ];
 
@@ -75,7 +95,7 @@ export const socials = [
 
 export const translations = {
   pt: {
-    nav: { about: 'Sobre', projects: 'Projetos', contact: 'Contato' },
+    nav: { about: 'Sobre', projects: 'Projetos', mockups: 'Mockups', contact: 'Contato' },
     hero: {
       greeting: 'Olá, eu sou',
       name: 'Caio',
@@ -89,6 +109,13 @@ export const translations = {
     },
     skills: { title: 'Skills' },
     projects: { title: 'Projetos', demo: 'Demo', site: 'Site', code: 'Código' },
+    mockups: {
+      title: 'Mockups',
+      subtitle: 'Sites fictícios criados para explorar UI/UX e mostrar como seriam projetos reais.',
+      badge: 'Conceito',
+      comingSoon: 'Em breve',
+      viewConcept: 'Ver conceito',
+    },
     contact: {
       title: "Let's connect",
       text: 'Quer conversar ou trabalhar comigo?',
@@ -99,7 +126,7 @@ export const translations = {
     footer: '© {year} Caio Rissa Silveira — Todos os direitos reservados',
   },
   en: {
-    nav: { about: 'About', projects: 'Projects', contact: 'Contact' },
+    nav: { about: 'About', projects: 'Projects', mockups: 'Mockups', contact: 'Contact' },
     hero: {
       greeting: "Hi, I'm",
       name: 'Caio',
@@ -113,6 +140,13 @@ export const translations = {
     },
     skills: { title: 'Skills' },
     projects: { title: 'Projects', demo: 'Demo', site: 'Site', code: 'Code' },
+    mockups: {
+      title: 'Mockups',
+      subtitle: 'Fictional websites built to explore UI/UX and showcase what real client projects could look like.',
+      badge: 'Concept',
+      comingSoon: 'Coming soon',
+      viewConcept: 'View concept',
+    },
     contact: {
       title: "Let's connect",
       text: 'Want to chat or work with me?',
