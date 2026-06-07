@@ -1,3 +1,15 @@
+export const studio = {
+  name: 'Loomee AI',
+  url: 'https://loomeeai.com',
+  image: '/images/printloomee.png',
+  tagline: 'Seu negócio precisa de site. A gente faz.',
+  taglineEn: 'Your business needs a website. We build it.',
+  description:
+    'Empresa que criei com um amigo para fazer sites e landing pages sob medida. Design no Figma, código na mão, direto com quem desenvolve, sem template genérico.',
+  descriptionEn:
+    'A company I started with a friend to build custom websites and landing pages. Figma design, hand-coded, direct contact with the developers, no generic templates.',
+};
+
 export const projects = [
   {
     title: 'Fyzen',
@@ -95,7 +107,12 @@ export const socials = [
 
 export const translations = {
   pt: {
-    nav: { about: 'Sobre', projects: 'Projetos', mockups: 'Mockups', contact: 'Contato' },
+    nav: { about: 'Sobre', studio: 'Loomee', projects: 'Projetos', mockups: 'Mockups', contact: 'Contato' },
+    studio: {
+      eyebrow: 'Minha empresa',
+      cta: 'Conhecer a Loomee',
+      ctaSecondary: 'Falar com a gente',
+    },
     hero: {
       greeting: 'Olá, eu sou',
       name: 'Caio',
@@ -126,7 +143,12 @@ export const translations = {
     footer: '© {year} Caio Rissa Silveira — Todos os direitos reservados',
   },
   en: {
-    nav: { about: 'About', projects: 'Projects', mockups: 'Mockups', contact: 'Contact' },
+    nav: { about: 'About', studio: 'Loomee', projects: 'Projects', mockups: 'Mockups', contact: 'Contact' },
+    studio: {
+      eyebrow: 'My company',
+      cta: 'Visit Loomee',
+      ctaSecondary: 'Get in touch',
+    },
     hero: {
       greeting: "Hi, I'm",
       name: 'Caio',

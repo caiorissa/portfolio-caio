@@ -19,6 +19,7 @@ export default function Navbar({ t, lang, setLang }) {
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
           <a href="#about" className="hidden md:block" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'color 0.3s' }}>{t.nav.about}</a>
+          <a href="#studio" className="hidden md:block" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'color 0.3s' }}>{t.nav.studio}</a>
           <a href="#projects" className="hidden md:block" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'color 0.3s' }}>{t.nav.projects}</a>
           <a href="#mockups" className="hidden md:block" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'color 0.3s' }}>{t.nav.mockups}</a>
           <a href="#contact" className="hidden md:block" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'color 0.3s' }}>{t.nav.contact}</a>
