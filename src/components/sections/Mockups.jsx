@@ -111,6 +111,16 @@ function MockupCard({ mockup, t, lang, index }) {
                     {t.mockups.comingSoon}
                   </span>
                 )}
+                {mockup.github && (
+                  <a
+                    href={mockup.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', borderRadius: 8, textDecoration: 'none', transition: 'all 0.3s' }}
+                  >
+                    {t.projects.code}
+                  </a>
+                )}
               </div>
             </div>
           </div>

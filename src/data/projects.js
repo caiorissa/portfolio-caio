@@ -47,46 +47,19 @@ export const projects = [
 
 export const mockups = [
   {
-    title: 'Noir Café',
-    category: 'Cafeteria',
-    categoryEn: 'Coffee Shop',
+    title: 'Gentelman\'s Cut',
+    category: 'Barbearia',
+    categoryEn: 'Barbershop',
     description:
-      'Site institucional para cafeteria premium, com cardápio digital, história da marca, reservas e contato para eventos.',
+      'Site institucional para barbearia premium, com cardápio digital, história da marca, reservas e contato para eventos.',
     descriptionEn:
-      'Institutional site for a premium coffee shop, featuring digital menu, brand story, reservations, and event contact.',
-    tech: ['React', 'TailwindCSS', 'UI/UX'],
-    url: 'noircafe.com.br',
-    gradient: 'linear-gradient(145deg, #1a0f0a 0%, #3d2314 50%, #c9a87c 100%)',
-    image: null,
-    demo: null,
-  },
-  {
-    title: 'Lumen SaaS',
-    category: 'Dashboard',
-    categoryEn: 'Dashboard',
-    description:
-      'Painel de analytics fictício para startups, com métricas em tempo real, gráficos, relatórios e gestão de equipe.',
-    descriptionEn:
-      'Fictional analytics dashboard for startups, with real-time metrics, charts, reports, and team management.',
-    tech: ['React', 'JavaScript', 'TailwindCSS'],
-    url: 'lumen.app',
+      'Institutional site for a premium barbershop, featuring digital menu, brand story, reservations, and event contact.',
+    tech: ['React', 'TailwindCSS', 'Framer Motion'],
+    url: 'https://mockup-barbearia.vercel.app/',
     gradient: 'linear-gradient(145deg, #050505 0%, #1a1033 50%, #5227FF 100%)',
-    image: null,
-    demo: null,
-  },
-  {
-    title: 'Atelier Mode',
-    category: 'E-commerce',
-    categoryEn: 'E-commerce',
-    description:
-      'Loja virtual de moda minimalista, com catálogo de produtos, lookbook editorial, filtros e checkout simplificado.',
-    descriptionEn:
-      'Minimalist fashion e-commerce store with product catalog, editorial lookbook, filters, and simplified checkout.',
-    tech: ['React', 'TailwindCSS', 'Figma'],
-    url: 'ateliermode.com',
-    gradient: 'linear-gradient(145deg, #f8f4f0 0%, #e8dfd6 50%, #1a1a1a 100%)',
-    image: null,
-    demo: null,
+    github: 'https://github.com/caiorissa/mockup-barbearia',
+    image: '/images/barbearia.png',
+    demo: 'https://mockup-barbearia.vercel.app/',
   },
 ];
 
@@ -101,7 +74,7 @@ export const skills = [
 export const socials = [
   { name: 'Instagram', url: 'https://instagram.com/caaiio.dev', icon: 'instagram' },
   { name: 'X / Twitter', url: 'https://x.com/caaiiors_', icon: 'twitter' },
-  { name: 'GitHub', url: 'https://github.com/caaiiors', icon: 'github' },
+  { name: 'GitHub', url: 'https://github.com/caiorissa', icon: 'github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/caio-rissa-b4706527a/', icon: 'linkedin' },
 ];
 
