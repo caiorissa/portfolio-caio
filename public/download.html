@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Download</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #050505;
+        color: #a1a1aa;
+        font-family: system-ui, -apple-system, sans-serif;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      p {
+        max-width: 22rem;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="status">Iniciando download…</p>
+    <script>
+      // Troque o nome do arquivo abaixo pelo que estiver em public/downloads/
+      const FILE = '/downloads/arquivo.zip';
+
+      const status = document.getElementById('status');
+      const filename = FILE.split('/').pop();
+
+      const link = document.createElement('a');
+      link.href = FILE;
+      link.download = filename;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      status.textContent = 'Download iniciado. Pode fechar esta aba.';
+    </script>
+  </body>
+</html>

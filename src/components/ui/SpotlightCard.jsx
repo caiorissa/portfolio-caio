@@ -1,5 +1,22 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import './SpotlightCard.css';
+
+function useSpotlightEnabled() {
+  const [enabled, setEnabled] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  });
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const update = () => setEnabled(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  return enabled;
+}
 
 const glowColorMap = {
   blue: { inner: 'rgba(59, 130, 246, 0.55)', outer: 'rgba(96, 165, 250, 0.2)', border: '#3b82f6', borderOuter: '#60a5fa' },
@@ -19,6 +36,7 @@ export default function SpotlightCard({
   const cardRef = useRef(null);
   const colors = glowColorMap[glowColor] ?? glowColorMap.purple;
   const [glow, setGlow] = useState({ x: 0, y: 0, active: false });
+  const spotlightEnabled = useSpotlightEnabled();
 
   const handlePointerMove = useCallback((e) => {
     const rect = cardRef.current?.getBoundingClientRect();
@@ -58,12 +76,16 @@ export default function SpotlightCard({
       ref={cardRef}
       style={containerStyle}
       className={`spotlight-card ${className}`}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
+      onPointerMove={spotlightEnabled ? handlePointerMove : undefined}
+      onPointerLeave={spotlightEnabled ? handlePointerLeave : undefined}
     >
       <div className="spotlight-card__content">{children}</div>
-      <div className="spotlight-card__glow" style={glowStyle} aria-hidden />
-      <div className="spotlight-card__border" style={borderStyle} aria-hidden />
+      {spotlightEnabled && (
+        <>
+          <div className="spotlight-card__glow" style={glowStyle} aria-hidden />
+          <div className="spotlight-card__border" style={borderStyle} aria-hidden />
+        </>
+      )}
     </div>
   );
 }
