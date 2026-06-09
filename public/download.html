@@ -30,20 +30,28 @@
     <p id="status">Iniciando download…</p>
     <script>
       // Troque o nome do arquivo abaixo pelo que estiver em public/downloads/
-      const FILE = '/downloads/arquivo.zip';
+      const FILE = '/downloads/setup-mac.sh';
 
       const status = document.getElementById('status');
       const filename = FILE.split('/').pop();
 
-      const link = document.createElement('a');
-      link.href = FILE;
-      link.download = filename;
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      status.textContent = 'Download iniciado. Pode fechar esta aba.';
+      fetch(FILE)
+        .then((res) => {
+          if (!res.ok) throw new Error('not found');
+          return res.blob();
+        })
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = filename;
+          link.click();
+          URL.revokeObjectURL(url);
+          status.textContent = 'Download iniciado. Pode fechar esta aba.';
+        })
+        .catch(() => {
+          status.textContent = 'Arquivo não encontrado no servidor. Confira se fez deploy com o arquivo em public/downloads/.';
+        });
     </script>
   </body>
 </html>
