@@ -6,5 +6,16 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    {
+      name: 'download-route',
+      configureServer(server) {
+        server.middlewares.use((req, _res, next) => {
+          if (req.url === '/download' || req.url === '/download/') {
+            req.url = '/download.html';
+          }
+          next();
+        });
+      },
+    },
   ],
 })

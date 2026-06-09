@@ -4,7 +4,13 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: transparent;
-  touch-action: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .spotlight-card__glow,
+  .spotlight-card__border {
+    display: none;
+  }
 }
 
 .spotlight-card__content {
