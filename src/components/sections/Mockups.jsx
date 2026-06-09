@@ -13,7 +13,7 @@ const tiltProps = {
   showMobileWarning: false,
 };
 
-function MockupPreview({ mockup }) {
+function MockupPreview({ mockup, t, lang }) {
   if (mockup.image) {
     return (
       <img
@@ -25,25 +25,42 @@ function MockupPreview({ mockup }) {
     );
   }
 
+  const category = lang === 'pt' ? mockup.category : (mockup.categoryEn || mockup.category);
+
   return (
     <div style={{ width: '100%', height: '100%', background: mockup.gradient, display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 12px', background: 'rgba(0,0,0,0.35)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff5f57' }} />
-        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#febc2e' }} />
-        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#28c840' }} />
-        <div style={{ flex: 1, marginLeft: 8, height: 20, borderRadius: 6, background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', padding: '0 10px' }}>
-          <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.02em' }}>
-            {mockup.url}
-          </span>
+      {!mockup.comingSoon && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 12px', background: 'rgba(0,0,0,0.35)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff5f57' }} />
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#febc2e' }} />
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#28c840' }} />
+          <div style={{ flex: 1, marginLeft: 8, height: 20, borderRadius: 6, background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', padding: '0 10px' }}>
+            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.02em' }}>
+              {mockup.url}
+            </span>
+          </div>
         </div>
-      </div>
+      )}
       <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.28)' }} />
         <div style={{ position: 'relative', textAlign: 'center' }}>
-          <p style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
-            {mockup.category}
-          </p>
-          <p style={{ fontSize: 22, fontWeight: 700, color: 'white', letterSpacing: '-0.02em' }}>{mockup.title}</p>
+          {mockup.comingSoon ? (
+            <>
+              <p style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
+                {category}
+              </p>
+              <p style={{ fontSize: 18, fontWeight: 600, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em' }}>
+                {t.mockups.comingSoon}
+              </p>
+            </>
+          ) : (
+            <>
+              <p style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
+                {mockup.category}
+              </p>
+              <p style={{ fontSize: 22, fontWeight: 700, color: 'white', letterSpacing: '-0.02em' }}>{mockup.title}</p>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -51,9 +68,12 @@ function MockupPreview({ mockup }) {
 }
 
 function MockupCard({ mockup, t, lang, index }) {
+  const category = lang === 'pt' ? mockup.category : (mockup.categoryEn || mockup.category);
+  const cardLabel = mockup.title || category;
+
   return (
     <FadeContent blur delay={index * 0.1} yOffset={30}>
-      <TiltedCard {...tiltProps} captionText={mockup.title}>
+      <TiltedCard {...tiltProps} captionText={cardLabel}>
         <GlassSurface
           width="100%"
           height="auto"
@@ -69,59 +89,75 @@ function MockupCard({ mockup, t, lang, index }) {
         >
           <div style={{ width: '100%' }}>
             <div style={{ overflow: 'hidden', borderRadius: '16px 16px 0 0', height: 200 }}>
-              <MockupPreview mockup={mockup} />
+              <MockupPreview mockup={mockup} t={t} lang={lang} />
             </div>
 
             <div style={{ padding: 20 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-                <h3 style={{ color: 'white', fontWeight: 700, fontSize: 16 }}>{mockup.title}</h3>
-                <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'rgba(255,255,255,0.55)', background: 'rgba(255,255,255,0.06)', padding: '2px 8px', borderRadius: 20, fontWeight: 500 }}>
-                  {t.mockups.badge}
-                </span>
-              </div>
-
-              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                {lang === 'pt' ? mockup.category : (mockup.categoryEn || mockup.category)}
-              </p>
-
-              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, marginBottom: 16, lineHeight: 1.5 }}>
-                {lang === 'pt' ? mockup.description : (mockup.descriptionEn || mockup.description)}
-              </p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
-                {mockup.tech.map(tech => (
-                  <span key={tech} style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', padding: '3px 10px', borderRadius: 20 }}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: 8 }}>
-                {mockup.demo ? (
-                  <a
-                    href={mockup.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', background: '#5227FF', color: 'white', borderRadius: 8, textDecoration: 'none', transition: 'all 0.3s' }}
-                  >
-                    {t.mockups.viewConcept}
-                  </a>
-                ) : (
-                  <span style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.35)', borderRadius: 8 }}>
+              {mockup.comingSoon ? (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                    <h3 style={{ color: 'white', fontWeight: 700, fontSize: 16 }}>{category}</h3>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'rgba(255,255,255,0.55)', background: 'rgba(255,255,255,0.06)', padding: '2px 8px', borderRadius: 20, fontWeight: 500 }}>
+                      {t.mockups.badge}
+                    </span>
+                  </div>
+                  <span style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.35)', borderRadius: 8, display: 'inline-block' }}>
                     {t.mockups.comingSoon}
                   </span>
-                )}
-                {mockup.github && (
-                  <a
-                    href={mockup.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', borderRadius: 8, textDecoration: 'none', transition: 'all 0.3s' }}
-                  >
-                    {t.projects.code}
-                  </a>
-                )}
-              </div>
+                </>
+              ) : (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                    <h3 style={{ color: 'white', fontWeight: 700, fontSize: 16 }}>{mockup.title}</h3>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'rgba(255,255,255,0.55)', background: 'rgba(255,255,255,0.06)', padding: '2px 8px', borderRadius: 20, fontWeight: 500 }}>
+                      {t.mockups.badge}
+                    </span>
+                  </div>
+
+                  <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                    {category}
+                  </p>
+
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, marginBottom: 16, lineHeight: 1.5 }}>
+                    {lang === 'pt' ? mockup.description : (mockup.descriptionEn || mockup.description)}
+                  </p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
+                    {mockup.tech.map(tech => (
+                      <span key={tech} style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', padding: '3px 10px', borderRadius: 20 }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    {mockup.demo ? (
+                      <a
+                        href={mockup.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', background: '#5227FF', color: 'white', borderRadius: 8, textDecoration: 'none', transition: 'all 0.3s' }}
+                      >
+                        {t.mockups.viewConcept}
+                      </a>
+                    ) : (
+                      <span style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.35)', borderRadius: 8 }}>
+                        {t.mockups.comingSoon}
+                      </span>
+                    )}
+                    {mockup.github && (
+                      <a
+                        href={mockup.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 12, fontWeight: 500, padding: '8px 16px', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', borderRadius: 8, textDecoration: 'none', transition: 'all 0.3s' }}
+                      >
+                        {t.projects.code}
+                      </a>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </GlassSurface>
@@ -148,7 +184,7 @@ export default function Mockups({ t, lang }) {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 24 }}>
           {mockups.map((mockup, index) => (
-            <MockupCard key={mockup.title} mockup={mockup} t={t} lang={lang} index={index} />
+            <MockupCard key={mockup.title || mockup.category} mockup={mockup} t={t} lang={lang} index={index} />
           ))}
         </div>
       </div>

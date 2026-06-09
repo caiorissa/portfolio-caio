@@ -61,6 +61,63 @@ export const mockups = [
     image: '/images/barbearia.png',
     demo: 'https://mockup-barbearia.vercel.app/',
   },
+  {
+    title: 'VÉRTEX Performance Club',
+    category: 'Academia',
+    categoryEn: 'Gym',
+    description:
+      'Painel de gestão para rede de academias, com dashboard em tempo real, matrículas, mensalidades, fichas de treino, check-in e gestão de personais em múltiplas unidades.',
+    descriptionEn:
+      'Management dashboard for a gym network, featuring real-time metrics, enrollments, billing, workout plans, check-in, and personal trainer management across multiple locations.',
+    tech: ['React', 'TypeScript', 'TailwindCSS', 'Framer Motion', 'Recharts'],
+    url: 'https://mockup-academia.vercel.app/',
+    gradient: 'linear-gradient(145deg, #080807 0%, #161614 50%, #d4f000 100%)',
+    github: 'https://github.com/caiorissa/mockup-academia',
+    image: '/images/academia.png',
+    demo: 'https://mockup-academia.vercel.app/',
+  },
+  {
+    category: 'Imobiliária',
+    categoryEn: 'Real Estate',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #050508 0%, #0f1a2e 50%, #2563eb 100%)',
+  },
+  {
+    category: 'Loja de Roupas',
+    categoryEn: 'Clothing Store',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #0a0a0a 0%, #1a1018 50%, #be185d 100%)',
+  },
+  {
+    category: 'Transportadora',
+    categoryEn: 'Logistics',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #050505 0%, #141210 50%, #ea580c 100%)',
+  },
+  {
+    category: 'Hotel',
+    categoryEn: 'Hotel',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #080604 0%, #1c1810 50%, #ca8a04 100%)',
+  },
+  {
+    category: 'Escritório Jurídico',
+    categoryEn: 'Law Firm',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #050505 0%, #101418 50%, #475569 100%)',
+  },
+  {
+    category: 'Concessionária',
+    categoryEn: 'Car Dealership',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #050505 0%, #0d1117 50%, #dc2626 100%)',
+  },
+  {
+    category: 'Farmácia',
+    categoryEn: 'Pharmacy',
+    comingSoon: true,
+    gradient: 'linear-gradient(145deg, #050505 0%, #0d1117 50%, #8b5cf6 100%)',
+  },
 ];
 
 export const skills = [
