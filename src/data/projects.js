@@ -77,10 +77,19 @@ export const mockups = [
     demo: 'https://mockup-academia.vercel.app/',
   },
   {
+    title: 'Horizonte CRM Imobiliário',
     category: 'Imobiliária',
     categoryEn: 'Real Estate',
-    comingSoon: true,
-    gradient: 'linear-gradient(145deg, #050508 0%, #0f1a2e 50%, #2563eb 100%)',
+    description:
+      'CRM premium para imobiliárias, com dashboard editorial, funil de vendas com drag-and-drop, catálogo de imóveis, agenda de visitas, gestão de leads e operação multiunidade em tempo real.',
+    descriptionEn:
+      'Premium CRM for real estate agencies, featuring an editorial dashboard, drag-and-drop sales pipeline, property catalog, visit scheduling, lead management, and multi-branch operations in real time.',
+    tech: ['React', 'TypeScript', 'TailwindCSS', 'Framer Motion', 'Recharts'],
+    url: 'https://mockup-imobiliaria.vercel.app/',
+    gradient: 'linear-gradient(145deg, #0c0b0a 0%, #161412 50%, #c17f59 100%)',
+    github: 'https://github.com/caiorissa/mockup-imobiliaria',
+    image: '/images/imobiliaria.png',
+    demo: 'https://mockup-imobiliaria.vercel.app/',
   },
   {
     category: 'Loja de Roupas',
