@@ -139,7 +139,7 @@ export const skills = [
 
 export const socials = [
   { name: 'Instagram', url: 'https://instagram.com/caaiio.dev', icon: 'instagram' },
-  { name: 'X / Twitter', url: 'https://x.com/caaiiors_', icon: 'twitter' },
+  { name: 'X / Twitter', url: 'https://x.com/caiorissa', icon: 'twitter' },
   { name: 'GitHub', url: 'https://github.com/caiorissa', icon: 'github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/caio-rissa-b4706527a/', icon: 'linkedin' },
 ];
