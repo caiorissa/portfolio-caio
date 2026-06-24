@@ -20,38 +20,105 @@
         padding: 1.5rem;
         text-align: center;
       }
+      h1 {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
       p {
-        max-width: 22rem;
+        max-width: 24rem;
         line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: min(100%, 16rem);
+      }
+      button {
+        appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+        font: inherit;
+        font-size: 0.95rem;
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      button:hover {
+        border-color: #5227ff;
+        background: rgba(82, 39, 255, 0.12);
+      }
+      button span {
+        display: block;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 0.25rem;
+      }
+      #status {
+        margin-top: 1.25rem;
+        min-height: 1.5rem;
+        font-size: 0.9rem;
       }
     </style>
   </head>
   <body>
-    <p id="status">Iniciando download…</p>
+    <div>
+      <h1>Setup pós-formatação</h1>
+      <p>Escolha o sistema. O download começa na hora.</p>
+
+      <div class="buttons">
+        <button type="button" data-file="/downloads/setup-mac.sh">
+          macOS
+          <span>setup-mac.sh</span>
+        </button>
+        <button type="button" data-file="/downloads/setup-windows.zip">
+          Windows
+          <span>setup-windows.zip</span>
+        </button>
+      </div>
+
+      <p id="status"></p>
+    </div>
+
     <script>
-      // Troque o nome do arquivo abaixo pelo que estiver em public/downloads/
-      const FILE = '/downloads/setup-mac.sh';
-
       const status = document.getElementById('status');
-      const filename = FILE.split('/').pop();
 
-      fetch(FILE)
-        .then((res) => {
-          if (!res.ok) throw new Error('not found');
-          return res.blob();
-        })
-        .then((blob) => {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = filename;
-          link.click();
-          URL.revokeObjectURL(url);
-          status.textContent = 'Download iniciado. Pode fechar esta aba.';
-        })
-        .catch(() => {
-          status.textContent = 'Arquivo não encontrado no servidor. Confira se fez deploy com o arquivo em public/downloads/.';
-        });
+      function download(file) {
+        const filename = file.split('/').pop();
+        status.textContent = 'Iniciando download…';
+
+        fetch(file)
+          .then((res) => {
+            if (!res.ok) throw new Error('not found');
+            return res.blob();
+          })
+          .then((blob) => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+            status.textContent = 'Download iniciado. Pode fechar esta aba.';
+          })
+          .catch(() => {
+            status.textContent = 'Arquivo não encontrado no servidor.';
+          });
+      }
+
+      document.querySelectorAll('button[data-file]').forEach((button) => {
+        button.addEventListener('click', () => download(button.dataset.file));
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const os = params.get('os');
+      if (os === 'mac') download('/downloads/setup-mac.sh');
+      if (os === 'windows') download('/downloads/setup-windows.zip');
     </script>
   </body>
 </html>
