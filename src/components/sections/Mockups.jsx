@@ -26,7 +26,10 @@ export default function Mockups({ t, lang }) {
             const description =
               lang === 'pt' ? mockup.description : mockup.descriptionEn;
             return (
-              <article className="concept-card" key={mockup.title}>
+              <article
+                className={`concept-card${mockup.featured ? ' concept-card-featured' : ''}`}
+                key={mockup.title}
+              >
                 <a
                   href={mockup.demo}
                   target="_blank"
@@ -59,15 +62,17 @@ export default function Mockups({ t, lang }) {
                       {t.mockups.viewConcept}
                       <ArrowUpRight />
                     </a>
-                    <a
-                      href={mockup.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="icon-link"
-                      aria-label={`GitHub — ${t.projects.code}: ${mockup.title}`}
-                    >
-                      GitHub
-                    </a>
+                    {mockup.github && (
+                      <a
+                        href={mockup.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="icon-link"
+                        aria-label={`GitHub — ${t.projects.code}: ${mockup.title}`}
+                      >
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>

@@ -70,6 +70,24 @@ export const projects = [
 
 export const mockups = [
   {
+    title: 'NEXA',
+    width: 1586,
+    height: 992,
+    alt: 'Mockup editorial da plataforma financeira NEXA em monitor e smartphone',
+    altEn: 'Editorial mockup of the NEXA finance platform on a monitor and smartphone',
+    category: 'Finanças pessoais',
+    categoryEn: 'Personal finance',
+    description:
+      'Plataforma financeira com visão consolidada do patrimônio, movimentações, cartões, investimentos e análises.',
+    descriptionEn:
+      'A personal finance platform with a consolidated view of net worth, transactions, cards, investments, and analytics.',
+    tech: ['Product Design', 'Responsive UI', 'Dashboard'],
+    github: null,
+    image: '/images/nexa-mockup.png',
+    demo: 'https://nexa-jade-theta.vercel.app/',
+    featured: true,
+  },
+  {
     title: "Gentelman's Cut",
     width: 3408,
     height: 1964,

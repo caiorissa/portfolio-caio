@@ -697,6 +697,24 @@ main:focus {
   display: flex;
   flex-direction: column;
 }
+.concept-card-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.65fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  margin-bottom: 16px;
+}
+.concept-card-featured .concept-image {
+  padding: clamp(12px, 1.6vw, 20px);
+  background: #151714;
+}
+.concept-card-featured .concept-body {
+  padding-top: 0;
+}
+.concept-card-featured .concept-body h3 {
+  font-size: clamp(28px, 3vw, 42px);
+}
 .concept-image {
   display: block;
   padding: 14px;
