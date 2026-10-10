@@ -7,8 +7,12 @@ export default function ProjectImage({
   const base = project.image.replace(/\.png$/, '');
   return (
     <img
-      src={`${base}-1280.webp`}
-      srcSet={`${base}-640.webp 640w, ${base}-1280.webp 1280w`}
+      src={project.directImage ? project.image : `${base}-1280.webp`}
+      srcSet={
+        project.directImage
+          ? undefined
+          : `${base}-640.webp 640w, ${base}-1280.webp 1280w`
+      }
       sizes={sizes}
       width={project.width}
       height={project.height}

@@ -74,8 +74,8 @@ export default function Hero({ t, lang }) {
             <a
               id="hero-preview"
               className={`preview-image preview-image-${selected}`}
-              href={project.demo}
-              target="_blank"
+              href={project.demo || '#projects'}
+              target={project.demo ? '_blank' : undefined}
               rel="noopener noreferrer"
               aria-label={`${t.projects.site}: ${project.title}`}
             >
